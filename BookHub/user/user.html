@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Online Book Hub</title>
+	<link rel="stylesheet" type="text/css" href="Static/admin.css">
+	<link rel="stylesheet" href="https://use.typekit.net/wqe7gdm.css">
+</head>
+<body>
+	<header>
+		<img src="Images/logo5.png" height="5%" width="10%">
+	</header>
+
+	<section class="menu">
+		<nav>
+			<button class="menu-items" onclick="openContent(event, 'Myprofile')" id="defaultOpen">My Profile</button>
+			<button class="menu-items" onclick="openContent(event, 'View')">View Books</button>
+			<button class="menu-items" onclick="openContent(event, 'Issued')" >Books I Issued</button>
+			<button class="menu-items" onclick="openContent(event, 'Buybook')">Buy E-Books</button>
+			<button class="menu-items" onclick="openContent(event, 'ChPwd')">Change Password</button>
+			<a href="logout.php" class="menu-items">Logout</a>
+		</nav>
+	</section>
+
+	<section id="Myprofile" class="menu-content" align="center">
+		<div align="center">
+			<h1>MY PROFILE</h1>
+			<form>
+			<table>
+				<tr>
+					<td>Department</td>
+					<td><select id="dept" required>
+						<option value="none">Please select the Departmet</option>
+						<option value="cs">Computer Science</option>
+						<option value="bot">Botany</option>
+						<option value="zoo">Zoology</option>	
+					</select></td>
+				</tr>
+				<tr><td></td><td><span id="profile_err1"></span></td></tr>
+				<tr>
+					<td>Student ID</td>
+					<td><input type="text" id="sid" pattern="[0-9]{3}" required></td>
+				</tr>
+				<tr><td></td><td><span id="profile_err2"></span></td></tr>
+				<tr>
+					<td>Student Name</td>
+					<td><input type="text" id="sname" required></td>
+				</tr>
+				<tr><td></td><td><span id="profile_err3"></span></td></tr>
+				<tr>
+					<td>Age</td>
+					<td><input type="text" id="age" pattern="[0-9]{2}" required></td>
+				</tr>
+				<tr><td></td><td><span id="profile_err4"></span></td></tr>
+				<tr>
+					<td>Photo</td>
+					<td>&nbsp;&nbsp;&nbsp;<input type="file" id="pic"></td>
+				</tr>
+				<tr><td></td><td><span id="profile_err5"></span></td></tr>
+			</table><br>
+			<input type="submit" id="submit" value="SUBMIT"><br>
+			</form>
+			<script type="text/javascript">
+				var submit=document.getElementById("submit");
+				submit.onclick=function(e){
+					Myprofile_validate();
+				}
+				function Myprofile_validate(){
+					var dept=document.getElementById("dept");
+					if(dept.value == "none"){
+						document.getElementById("profile_err1").innerHTML="Please select a category";
+					}
+					else{
+						document.getElementById("profile_err1").innerHTML=" ";
+					}
+					var sid=document.getElementById("sid");
+					if(sid.checkValidity){
+						document.getElementById("profile_err2").innerHTML=sid.validationMessage;
+					}
+					var sname=document.getElementById("sname");
+					if(sname.checkValidity){
+						document.getElementById("profile_err3").innerHTML=sname.validationMessage;
+					}
+					var age=document.getElementById("age");
+					if(age.checkValidity){
+						document.getElementById("profile_err4").innerHTML=age.validationMessage;
+					}
+				}
+			</script>
+		</div>
+	</section>
+
+	<section id="View" class="menu-content">
+		<div align="center">
+			<h1>BOOK AVAILABLE</h1>
+			<h4> will display all the books</h4>
+		</div>
+	</section>
+
+	<section id="Issued" class="menu-content">
+		<div align="center">
+			<h1>BOOK ISSUED</h1>
+			<h4> will display all the books issued by you</h4>
+		</div>
+	</section>
+
+	<section id="Buybook" class="menu-content">
+		<div align="center">
+			<h1>ONLINE BOOK</h1>
+			<h4>you can view and download book pdf</h4>
+		</div>
+	</section>
+
+	<section id="ChPwd" class="menu-content">
+		<div align="center">
+			<h1>CHANGE PASSWORD</h1>
+			<form>
+				<table>
+					<tr>
+						<td>Current Password</td>
+						<td><input type="password" id="currpwd" required></td>
+					</tr>
+					<tr><td></td><td><span id="chpwd_err1"></span></td></tr>
+					<tr>
+						<td>Change Password</td>
+						<td><input type="password" id="pwd1" required></td>
+					</tr>
+					<tr><td></td><td><span id="chpwd_err2"></span></td></tr>
+					<tr>
+						<td>Confirm Password</td>
+						<td><input type="password" id="pwd2" required></td>
+					</tr>
+					<tr><td></td><td><span id="chpwd_err3"></span></td></tr>
+				</table><br>
+				<input type="submit" id="btnChPwd" value="SUBMIT"><br>
+			</form>
+			<script type="text/javascript">
+				var btnChPwd=document.getElementById("btnChPwd");
+				btnChPwd.onclick=function(e){
+					var bool=changepwd_validate();
+					if(!bool){
+						e.preventDefault();
+					}
+				}
+				function changepwd_validate(){
+					var currpwd=document.getElementById("currpwd");
+					var pwd1=document.getElementById("pwd1");
+					var pwd2=document.getElementById("pwd2");
+					if(currpwd.checkValidity){
+						document.getElementById("chpwd_err1").innerHTML=currpwd.validationMessage;
+					}
+					if(pwd1.checkValidity){
+						document.getElementById("chpwd_err2").innerHTML=pwd1.validationMessage;
+					}
+					if(pwd2.checkValidity){
+						document.getElementById("chpwd_err3").innerHTML=pwd2.validationMessage;
+					}
+					if(pwd1.value != pwd2.value)
+					{
+					document.getElementById("chpwd_err3").innerHTML="Password Not Equal";
+					return false;
+					}
+				}
+			</script>
+		</div>
+	</section>
+
+	<script>
+		function openContent(evt, contentName){
+			var i, menucontent, menuitems;
+			menucontent = document.getElementsByClassName("menu-content");
+			for(i=0; i< menucontent.length; i++){
+				menucontent[i].style.display = "none";
+			}
+			menuitems = document.getElementsByClassName("menu-items");
+			for(i=0; i<menuitems.length; i++){
+				menuitems[i].className = menuitems[i].className.replace("active","");
+			}
+			document.getElementById(contentName).style.display = "block";
+			evt.currentTarget.className += "active";
+		}
+		document.getElementById("defaultOpen").click(); 
+	</script>
+
+	<footer>
+		
+	</footer>
+</body>
+</html>
