@@ -1,0 +1,72 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	font-family: Times New Roman,Arial;
+	color: black;
+}
+header{
+	text-align: center;
+	font-size: 50px;
+	font-style: bold;
+}
+footer{
+	text-align: center;
+	background-color: grey;
+	padding: 10px;
+	font-style: italic;
+	position: absolute;
+	bottom: 0;
+	width: 98.5%;
+}
+.tbl1{
+	padding: 20px;
+}
+.read{
+	background-color: lightgrey;
+	cursor: no-drop;
+	outline: none;
+}
+input[type=submit],input[type=button]{
+	background-color: lightblue;
+	color:orange;
+	font-size: 20px;
+	font-weight: bolder;
+	border:none;
+	padding: 10px;
+	cursor: pointer;
+}
+input[type=submit]:hover,input[type=button]:hover{
+	background-color: orange;
+	color:lightblue;
+}
+span{
+	color: red;
+	font-style: italic;
+}
+span::before{
+	content: "* ";
+}
+.message,.errmessage{
+	font-size: 30px;
+	font-weight: bolder;
+	margin: 10px;
+}
+.errmessage{
+	font-size: 20px;
+	color: red;
+	font-style: italic;
+}
+.viewtbl{
+  border-collapse: collapse; 
+  width:50%;
+  border:1px solid black;
+  margin: 10px;
+}
+.viewtbl th{
+  background-color: #ffbc4b;
+  padding: 5px;
+}
+.viewtbl td{
+  padding:10px;
+  text-align: center;
+}
