@@ -11,9 +11,11 @@ This project has the following modules,
   4. User
 
 Operations,
+
 Admin can Add, Edit, Delete Issue and Return books based on request given by user also view the list of books , Books Issued and students who has registered .
+
 User can request for books , change their account password and view the books requested and issued
 
 ## CURD:
 
-It is a bsic CURD PHP application.
+It is a basic CURD PHP application.
