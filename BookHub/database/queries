@@ -1,0 +1,37 @@
+//register
+
+CREATE TABLE register (
+    name varchar(255) NOT NULL PRIMARY KEY,
+    mail varchar(255) NOT NULL UNIQUE,
+    phoneno bigint(11) NOT NULL,
+    password varchar(255) NOT NULL
+);
+
+//table
+
+CREATE TABLE book (
+    bid varchar(255) NOT NULL PRIMARY KEY,
+    category varchar(255) NOT NULL,
+    author varchar(255) NOT NULL,
+    name varchar(255) NOT NULL,
+    status int DEFAULT 1
+);
+
+//issue
+
+CREATE TABLE issue (
+    sid varchar(255) NOT NULL,
+    bid varchar(255) NOT Null,
+    issue_date date NOT NULL,
+    due_date date NOT NULL,
+    fineamt int DEFAULT 0 
+);
+
+//request
+
+CREATE TABLE request (
+    sid varchar(255) NOT NULL,
+    bid varchar(255) NOT Null,
+    status int DEFAULT 0 
+);
+
